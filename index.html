@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D-M Calculator</title>
+
+    <!-- CSS Link -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Font Awesome Link -->
+    <link rel="stylesheet" href="/Resources/fontawesome-free-6.7.2-web/css/all.css">
+</head>
+<body>
+    <div class="calculator">
+
+        <!-- App Name and Mode button -->
+        <div class="top-bar">
+            <h3>D-M Calculator</h3>
+            <button class="toggle-mode" onclick="toggleMode()">
+                <i class="fa-solid fa-moon"></i>             
+            </button>
+        </div>
+
+        <!-- Input Box and Histories of Calculation -->
+        <div class="display">0</div>
+        <div class="history" id="history"></div>
+
+        <!-- Button Section -->
+        <div class="buttons">
+
+            <!-- First Line -->
+            <button class="button clear" onclick="">AC</button>
+            <button class="button clear" onclick="">CE</button>
+            <button class="button" onclick=""><i class="fa-solid fa-delete-left"></i></button>
+            <button class="button operator" onclick="">÷</button>
+
+            <!-- Second Line -->
+            <button class="button" onclick="">7</button>
+            <button class="button" onclick="">8</button>
+            <button class="button" onclick="">9</button>
+            <button class="button operator" onclick="">x</button>
+
+            <!-- Third Line -->
+            <button class="button" onclick="">4</button>
+            <button class="button" onclick="">5</button>
+            <button class="button" onclick="">6</button>
+            <button class="button operator" onclick="">-</button>
+
+            <!-- Fourth Line -->
+            <button class="button" onclick="">1</button>
+            <button class="button" onclick="">2</button>
+            <button class="button" onclick="">3</button>
+            <button class="button operator" onclick="">+</button>
+
+            <!-- Fifth Line -->
+            <button class="button" onclick="">+/-</button>
+            <button class="button" onclick="">0</button>
+            <button class="button" onclick="">.</button>
+            <button class="button equal" onclick="">=</button>
+
+        </div>
+
+    </div>
+
+    <!-- JavaScript Link -->
+    <script src="index.js"></script>
+</body>
+</html>
+

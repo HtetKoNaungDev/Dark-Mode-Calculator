@@ -1,0 +1,123 @@
+:root{
+  --bg-color: #f0f0f0;
+  --txt-color: #000;
+  --btn-bg-color: #dedddd;
+  --display-bg: #e0e0e0;
+  --history-bg: #fafafa;
+  --clear-bg: #eb4d4b;
+  --equal-bg: #6ab04c;
+  --operator-bg: #ffbe76;
+  --box-shadow: 2px 2px 30px 2px rgba(0, 0, 0, 0.5);
+}
+
+.dark-mode {
+  --bg-color: #1e1e1e;
+  --display-bg: #333;
+  --txt-color: #fff;
+  --btn-bg-color: #444;
+  --operator-bg: #ff9f43;
+  --equal-bg: #44bd32;
+  --clear-bg: #c23616;
+  --history-bg: #2f2f2f;
+  --box-shadow: 2px 2px 30px 2px rgba(255, 255, 255, 0.5)
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--txt-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.calculator {
+  border-radius: 16px;
+  padding: 20px;
+  background-color: var(--bg-color);
+  width: 360px;
+  box-shadow: var(--box-shadow);
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.toggle-mode {
+  cursor: pointer;
+  padding: 5px 16px;
+  border-radius: 10px;
+  font-size: 17px;
+  border: none;
+  background-color: var(--btn-bg-color);
+  color: var(--txt-color);
+}
+
+.toggle-mode:hover {
+  filter: brightness(1.1);
+}
+
+.display {
+  background-color: var(--display-bg);
+  padding: 20px;
+  font-size: 35px;
+  text-align: right;
+  border-radius: 10px;
+  min-height: 50px;
+  margin-bottom: 10px;
+  overflow-wrap: break-word;
+  color: var(--txt-color);
+}
+
+.history {
+  border: 1px solid #ddd;
+  background-color: var(--history-bg);
+  padding: 10px;
+  font-size: 20px;
+  border-radius: 10px;
+  max-height: 130px;
+  margin-bottom: 10px;
+  color: var(--txt-color);
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.button {
+  padding: 18px;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--btn-bg-color);
+  color: var(--txt-color);
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.button:hover {
+  filter: brightness(1.1);
+}
+
+.clear {
+  background-color: var(--clear-bg);
+  color: white;
+}
+
+.equal {
+  background-color: var(--equal-bg);
+  color: white;
+}
+
+.operator {
+  background-color: var(--operator-bg);
+}
