@@ -40,7 +40,15 @@ function press(val) {
         resetNext = false;
     }
 
-    if (input.slice(-1) === ')') {
+    if (input === '0') {
+        if (val === '0') {
+            return; // input = '0' already, don't allow more zeros
+        } else if ("123456789".includes(val)) {
+            input = val; // replace 0 with the new number
+        } else {
+            input += val; // allow operators or other characters
+        }
+    } else if (input.slice(-1) === ')') {
         input += '*' + val;
     } else {
         input += val;
