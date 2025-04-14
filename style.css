@@ -7,6 +7,7 @@
   --clear-bg: #eb4d4b;
   --equal-bg: #6ab04c;
   --operator-bg: #ffbe76;
+  --fade-color: #828080;
   --box-shadow: 2px 2px 30px 2px rgba(0, 0, 0, 0.5);
 }
 
@@ -19,6 +20,7 @@
   --equal-bg: #44bd32;
   --clear-bg: #c23616;
   --history-bg: #2f2f2f;
+  --fade-color: #a7a7a7;
   --box-shadow: 2px 2px 30px 2px rgba(255, 255, 255, 0.5)
 }
 
@@ -67,12 +69,24 @@ body {
   background-color: var(--display-bg);
   padding: 20px;
   font-size: 35px;
-  text-align: right;
   border-radius: 10px;
-  min-height: 50px;
+  min-height: 40px;
   margin-bottom: 10px;
-  overflow-wrap: break-word;
   color: var(--txt-color);
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+
+#display span {
+  display: inline-block;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.fade-size {
+  font-size: 25px;
+  color: var(--fade-color);
 }
 
 .history {
@@ -80,10 +94,11 @@ body {
   background-color: var(--history-bg);
   padding: 10px;
   font-size: 20px;
-  border-radius: 10px;
   max-height: 130px;
   margin-bottom: 10px;
+  overflow-wrap: break-word;
   color: var(--txt-color);
+  overflow-y: auto;
 }
 
 .buttons {

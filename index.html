@@ -23,41 +23,44 @@
         </div>
 
         <!-- Input Box and Histories of Calculation -->
-        <div class="display">0</div>
-        <div class="history" id="history"></div>
+        <div id="display" class="display">
+            <span id="displayInput">0</span>
+            <span id="result"></span>
+        </div>
+        <div id="history" class="history" id="history"></div>
 
         <!-- Button Section -->
         <div class="buttons">
 
             <!-- First Line -->
-            <button class="button clear" onclick="">AC</button>
-            <button class="button clear" onclick="">CE</button>
-            <button class="button" onclick=""><i class="fa-solid fa-delete-left"></i></button>
-            <button class="button operator" onclick="">÷</button>
+            <button class="button clear" onclick="clearEA()">CE/AC</button>
+            <button class="button" onclick="percentage()">%</button>
+            <button class="button" onclick="backspace()"><i class="fa-solid fa-delete-left"></i></button>
+            <button class="button operator" onclick="pressOperator('/')">÷</button>
 
             <!-- Second Line -->
-            <button class="button" onclick="">7</button>
-            <button class="button" onclick="">8</button>
-            <button class="button" onclick="">9</button>
-            <button class="button operator" onclick="">x</button>
+            <button class="button" onclick="press('7')">7</button>
+            <button class="button" onclick="press('8')">8</button>
+            <button class="button" onclick="press('9')">9</button>
+            <button class="button operator" onclick="pressOperator('*')">x</button>
 
             <!-- Third Line -->
-            <button class="button" onclick="">4</button>
-            <button class="button" onclick="">5</button>
-            <button class="button" onclick="">6</button>
-            <button class="button operator" onclick="">-</button>
+            <button class="button" onclick="press('4')">4</button>
+            <button class="button" onclick="press('5')">5</button>
+            <button class="button" onclick="press('6')">6</button>
+            <button class="button operator" onclick="pressOperator('-')">-</button>
 
             <!-- Fourth Line -->
-            <button class="button" onclick="">1</button>
-            <button class="button" onclick="">2</button>
-            <button class="button" onclick="">3</button>
-            <button class="button operator" onclick="">+</button>
+            <button class="button" onclick="press('1')">1</button>
+            <button class="button" onclick="press('2')">2</button>
+            <button class="button" onclick="press('3')">3</button>
+            <button class="button operator" onclick="pressOperator('+')">+</button>
 
             <!-- Fifth Line -->
-            <button class="button" onclick="">+/-</button>
-            <button class="button" onclick="">0</button>
-            <button class="button" onclick="">.</button>
-            <button class="button equal" onclick="">=</button>
+            <button class="button" onclick="toggleSign()">+/-</button>
+            <button class="button" onclick="press('0')">0</button>
+            <button class="button" onclick="decimal('.')">.</button>
+            <button class="button equal" onclick="equal()">=</button>
 
         </div>
 
@@ -67,4 +70,3 @@
     <script src="index.js"></script>
 </body>
 </html>
-
