@@ -85,7 +85,14 @@ function getLastNumber(str) {
 
 // % Function
 function percentage() {
-    if (!input || percentageApplied) return;
+    if (percentageApplied) return;
+
+    if (resetNext) {
+        input = solution.toString();
+        solution = '';
+        resetNext = false;
+        display.classList.remove('fade-size');
+    }
 
     const operators = ['+', '-', '*', '/'];
     let lastOperatorIndex = -1;
@@ -102,14 +109,25 @@ function percentage() {
         const operator = input[lastOperatorIndex];
         const rightPart = input.slice(lastOperatorIndex + 1);
 
-        const left = eval(leftPart);
         const right = parseFloat(rightPart);
 
-        if (!isNaN(left) && !isNaN(right)) {
-            const percentageValue = (left * right) / 100;
-            input = leftPart + operator + percentageValue;
-            percentageApplied = true;
-            updateDisplay();
+        if (!isNaN(right)) {
+            let newValue;
+
+            if (operator === '+' || operator === '-') {
+                const left = eval(leftPart);
+                if (!isNaN(left)) {
+                    newValue = (left * right) / 100;
+                }
+            } else if (operator === '*' || operator === '/') {
+                newValue = right / 100;
+            }
+
+            if (newValue !== undefined) {
+                input = leftPart + operator + newValue;
+                percentageApplied = true;
+                updateDisplay();
+            }
         }
     } else {
         const num = parseFloat(input);
