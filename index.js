@@ -42,11 +42,11 @@ function press(val) {
 
     if (input === '0') {
         if (val === '0') {
-            return; // input = '0' already, don't allow more zeros
+            return;
         } else if ("123456789".includes(val)) {
-            input = val; // replace 0 with the new number
+            input = val;
         } else {
-            input += val; // allow operators or other characters
+            input += val;
         }
     } else if (input.slice(-1) === ')') {
         input += '*' + val;
@@ -54,6 +54,7 @@ function press(val) {
         input += val;
     }
 
+    percentageApplied = false;
     clearCount = 0;
     updateDisplay();
 }
@@ -72,6 +73,7 @@ function pressOperator(op) {
     }    
 
     input += op;
+    percentageApplied = false;
     clearCount = 0;
     updateDisplay();
 }
@@ -83,14 +85,40 @@ function getLastNumber(str) {
 
 // % Function
 function percentage() {
-    const lastNum = getLastNumber(input);
-    if (!lastNum || percentageApplied) return;
+    if (!input || percentageApplied) return;
 
-    const percent = parseFloat(lastNum) / 100;
-    input = input.slice(0, -lastNum.length) + percent;
+    const operators = ['+', '-', '*', '/'];
+    let lastOperatorIndex = -1;
 
-    percentageApplied = true;
-    updateDisplay();
+    for (let i = input.length - 1; i >= 0; i--) {
+        if (operators.includes(input[i])) {
+            lastOperatorIndex = i;
+            break;
+        }
+    }
+
+    if (lastOperatorIndex !== -1) {
+        const leftPart = input.slice(0, lastOperatorIndex);
+        const operator = input[lastOperatorIndex];
+        const rightPart = input.slice(lastOperatorIndex + 1);
+
+        const left = eval(leftPart);
+        const right = parseFloat(rightPart);
+
+        if (!isNaN(left) && !isNaN(right)) {
+            const percentageValue = (left * right) / 100;
+            input = leftPart + operator + percentageValue;
+            percentageApplied = true;
+            updateDisplay();
+        }
+    } else {
+        const num = parseFloat(input);
+        if (!isNaN(num)) {
+            input = (num / 100).toString();
+            percentageApplied = true;
+            updateDisplay();
+        }
+    }
 }
 
 // decimal function
@@ -136,6 +164,7 @@ function clearEA() {
 function backspace() {
     if (!resetNext) {
         input = input.slice(0,-1);
+        percentageApplied = false;
         updateDisplay();
         clearCount = 0;
     }
